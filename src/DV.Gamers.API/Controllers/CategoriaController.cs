@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DV.Gamers.Domain.Entities;
+﻿using DV.Gamers.Domain.Entities;
 using DV.Gamers.Domain.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace DV.Gamers.API.Controllers
 {
@@ -45,9 +42,18 @@ namespace DV.Gamers.API.Controllers
         }
         [HttpPost]
 
-        public async Task<ActionResult> CriarCategoria([FromBody]Categoria _categoria) 
+        public async Task<ActionResult> CriarCategoria([FromBody]string descricao) 
         {
-            var categoriaAdd = _categoriaService.CriarCategoria(_categoria);
+
+            var categoria = new Categoria
+            {
+                Descricao = descricao,
+                CriadoEm = DateTime.Now,
+                Ativo = true
+
+            };
+
+            var categoriaAdd = _categoriaService.CriarCategoria(categoria);
             return Ok(categoriaAdd);
 
         }

@@ -14,7 +14,7 @@ namespace DV.Gamers.Infra.Data.EF.Context
 
         }
 
-        public DbSet<Jogo> Jogos { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
         public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
@@ -24,7 +24,7 @@ namespace DV.Gamers.Infra.Data.EF.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.ApplyConfiguration(new JogoMapping());
+            modelBuilder.ApplyConfiguration(new ProdutoMapping());
             modelBuilder.ApplyConfiguration(new PessoaMapping());
             modelBuilder.ApplyConfiguration(new FornecedorMapping());
             modelBuilder.ApplyConfiguration(new EnderecoMapping());

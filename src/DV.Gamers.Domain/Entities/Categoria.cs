@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DV.Gamers.Domain.Entities
 {
-    public class Categoria
+    public class Categoria : Base
     {
-        public Guid Id { get; set; }
+
         public string  Descricao { get; set; }
-        public DateTime CriadoEm { get; set; }
-        public bool Ativo { get; set; }
+        public ICollection<Produto> Produtos { get; set; }
 
     }
 }

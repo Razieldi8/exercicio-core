@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DV.Gamers.Application.Services;
 using DV.Gamers.Domain.Repositories;
 using DV.Gamers.Domain.Services;
@@ -9,14 +5,12 @@ using DV.Gamers.Infra.Data.EF.Context;
 using DV.Gamers.Infra.Data.EF.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace DV.Gamers.API
 {
@@ -52,8 +46,8 @@ namespace DV.Gamers.API
 
             services.AddScoped<DVGamersContext>();
 
-            services.AddScoped<IJogoRepository, JogoRepository>();
-            services.AddScoped<IJogoService, JogoService>();
+            services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<IProdutoService, ProdutoService>();
             services.AddScoped<IPessoaRepository, PessoaRepository>();
             services.AddScoped<IPessoaService, PessoaService>();
             services.AddScoped<IFornecedorRepository, FornecedorRepository>();
@@ -63,7 +57,10 @@ namespace DV.Gamers.API
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<ICategoriaService, CategoriaService>();
 
-
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
 
             services.AddControllers();
         }
