@@ -20,6 +20,10 @@ namespace DV.Gamers.Infra.Data.EF.Mapping
             builder.Property(p => p.Ativo).IsRequired();
             builder.Property(p => p.CriadoEm).IsRequired();
 
+            builder.HasOne(e => e.Pessoa)
+                   .WithMany(p => p.Enderecos).HasForeignKey(p1 => p1.PessoaId);
+
+
             builder.ToTable("Endereco");
         }
     }
