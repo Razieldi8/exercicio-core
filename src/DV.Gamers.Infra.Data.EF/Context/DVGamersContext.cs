@@ -19,6 +19,7 @@ namespace DV.Gamers.Infra.Data.EF.Context
         public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Telefone> Telefones { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,6 +30,7 @@ namespace DV.Gamers.Infra.Data.EF.Context
             modelBuilder.ApplyConfiguration(new FornecedorMapping());
             modelBuilder.ApplyConfiguration(new EnderecoMapping());
             modelBuilder.ApplyConfiguration(new CategoriaMapping());
+            modelBuilder.ApplyConfiguration(new TelefoneMapping());
         }
 
     }

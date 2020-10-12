@@ -56,6 +56,8 @@ namespace DV.Gamers.API
             services.AddScoped<IEnderecoService, EnderecoService>();
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<ICategoriaService, CategoriaService>();
+            services.AddScoped<ITelefoneRepository, TelefoneRepository>();
+            services.AddScoped<ITelefoneService, TelefoneService>();
 
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>
