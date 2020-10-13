@@ -8,10 +8,13 @@ namespace DV.Gamers.API.ViewModel
         public string Sobrenome { get; set; }
 
         public IList<EnderecoViewModel> Enderecos { get; set; }
+        public IList<TelefoneViewModel> Telefones { get; set; }
 
         public PessoaViewModel()
         {
             Enderecos = new List<EnderecoViewModel>();
+            Telefones = new List<TelefoneViewModel>();
         }
+        
     }
 }

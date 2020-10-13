@@ -17,6 +17,8 @@ namespace DV.Gamers.Infra.Data.EF.Mapping
             builder.Property(p => p.CriadoEm).IsRequired();
             builder.Property(p => p.Ativo).IsRequired();
 
+            builder.HasOne(e => e.Pessoa).WithMany(e1 => e1.Telefones).HasForeignKey(e2 => e2.PessoaId);
+
             builder.ToTable("Telefone");
         }
     }

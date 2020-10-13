@@ -8,5 +8,6 @@ namespace DV.Gamers.Domain.Entities
         public string Sobrenome { get; set; }
         public bool Status { get; set; }
         public ICollection<Endereco> Enderecos { get; set; } = new List<Endereco>();
+        public ICollection<Telefone> Telefones { get; set; } = new List<Telefone>();
     }
 }

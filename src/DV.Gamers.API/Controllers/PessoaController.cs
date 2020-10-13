@@ -42,8 +42,10 @@ namespace DV.Gamers.API.Controllers
 
         [HttpPost]
         public async Task<ActionResult> CriarPessoa([FromBody] PessoaViewModel pessoaViewModel)
-        {
+        {     
             var listaEnderecos = new List<Endereco>();
+            var listaTelefone = new List<Telefone>();
+
             var pessoa = new Pessoa
             {
                 Nome = pessoaViewModel.Nome,
@@ -66,6 +68,17 @@ namespace DV.Gamers.API.Controllers
                 };
 
                 pessoa.Enderecos.Add(endereco);
+            }
+            foreach(var item in pessoaViewModel.Telefones) 
+            {
+                var telefone = new Telefone
+                {
+                    DDD = item.DDD,
+                    Numero = item.Numero,
+                    CriadoEm = DateTime.Now,
+                    Ativo = true,
+                };
+                pessoa.Telefones.Add(telefone);
             }
 
             var pessoaAdd = _pessoaService.CriarPessoa(pessoa);
